@@ -7,4 +7,5 @@
   background-color: #323437;
   font-family: 'Roboto', Arial, sans-serif;
   color: #e2b714;
+  user-select: none;
 }
