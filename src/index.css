@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('./fonts/Roboto.ttf') format('truetype');
+}
+
+* {
+  background-color: #323437;
+  font-family: 'Roboto', Arial, sans-serif;
+  color: #e2b714;
+}
