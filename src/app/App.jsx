@@ -33,6 +33,10 @@ const Word = (props) => {
   return <span>{text}</span>;
 };
 
+const Timer = () => {
+  return <>asdfa</>
+}
+
 function App() {
   const [userInput, setUserInput] = useState('');
   const [activeWordIndex, setActiveWordIndex] = useState(0);
@@ -64,6 +68,7 @@ function App() {
   return (
     <div>
       <Logo />
+      <Timer />
 
       <p>
         {cloud.current.map((word, index) => {
