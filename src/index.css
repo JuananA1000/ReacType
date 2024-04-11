@@ -4,8 +4,12 @@
 }
 
 * {
-  background-color: #323437;
+  color-scheme: light dark;
+  background-color: #222;
   font-family: 'Roboto', Arial, sans-serif;
-  color: #e2b714;
+  color: #daaf38;
   user-select: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 32px;
 }
