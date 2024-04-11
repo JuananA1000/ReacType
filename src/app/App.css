@@ -7,3 +7,7 @@
   font-weight: bold;
   color: #ce0d0d;
 }
+
+.active {
+  font-weight: bold;
+}

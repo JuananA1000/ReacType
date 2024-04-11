@@ -27,11 +27,12 @@ const Word = (props) => {
 
 function App() {
   const [userInput, setUserInput] = useState('');
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeWordIndex, setActiveWordIndex] = useState(0);
+  const [correctWordArray, setCorrectWordArray] = useState([]);
 
   const processInput = (value) => {
     if (value.endsWith(' ')) {
-      setActiveIndex((index) => index + 1);
+      setActiveWordIndex((index) => index + 1);
       setUserInput('');
     } else {
       setUserInput(value);
@@ -50,7 +51,7 @@ function App() {
 
       <p>
         {cloud.current.map((word, index) => {
-          return <b>{<Word text={word} active={index === activeIndex} correct={null} />}</b>;
+          return <Word text={word} active={index === activeWordIndex} correct={correctWordArray[index]} />;
         })}
       </p>
 
