@@ -10,6 +10,8 @@ const getCloud = () =>
 
 function App() {
   const [userInput, setUserInput] = useState('');
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const cloud = useRef(getCloud());
 
   console.log('Contenido de getCloud: ', cloud.current);
@@ -18,7 +20,16 @@ function App() {
     <div>
       <Logo />
 
-      <p>{cloud.current.join(' ')}</p>
+      <p>
+        {cloud.current.map((word, index) => {
+          if (index === activeIndex) {
+            return <b>{word}</b>;
+          }
+
+          return <span>{word}</span>;
+        })}
+      </p>
+
       <input type='text' value={userInput} onChange={(e) => setUserInput(e.target.value)} />
     </div>
   );
