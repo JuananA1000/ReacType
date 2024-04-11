@@ -34,6 +34,14 @@ function App() {
     if (value.endsWith(' ')) {
       setActiveWordIndex((index) => index + 1);
       setUserInput('');
+
+      setCorrectWordArray((data) => {
+        const word = value.trim();
+        const newResult = [...data];
+        newResult[activeWordIndex] = word === cloud.current[activeWordIndex];
+
+        return newResult;
+      });
     } else {
       setUserInput(value);
     }
