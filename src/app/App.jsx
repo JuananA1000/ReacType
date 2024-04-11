@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Logo from '../components/Logo/Logo';
 import './App.css';
 
@@ -11,6 +11,12 @@ const getCloud = () =>
 // PENDIENTE: Este componente a un archivo aparte
 const Word = (props) => {
   const { text, active, correct } = props;
+
+  const reRender = useRef(0);
+
+  useEffect(() => {
+    reRender.current += 1;
+  });
 
   if (active) {
     return <span className='active'>{text}</span>;
