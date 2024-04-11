@@ -6,6 +6,20 @@ const getCloud = () =>
   `Lorem ipsum dolor sit amet consectetur adipisicing elit Id ipsum quae odit in magni totam consectetur vitae enim
   harum rerum maxime fugiat inventore nostrum corrupti labore explicabo similique quam et`;
 
+// PENDIENTE: Este componente a un archivo aparte
+const Word = (props) => {
+  const { text, active } = props;
+
+  return (
+    <span
+      style={{
+        fontWeight: active ? 'bold' : 'normal',
+      }}>
+      {text}
+    </span>
+  );
+};
+
 function App() {
   const [userInput, setUserInput] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
@@ -31,14 +45,11 @@ function App() {
 
       <p>
         {cloud.current.map((word, index) => {
-          if (index === activeIndex) {
-            return <b>{word}</b>;
-          }
-
-          return <span>{word}</span>;
+          return <b>{<Word text={word} active={index === activeIndex} />}</b>;
         })}
       </p>
 
+      {/* PENDIENTE: Este componente a un archivo aparte */}
       <input type='text' value={userInput} onChange={(e) => processInput(e.target.value)} />
     </div>
   );
