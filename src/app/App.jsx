@@ -4,17 +4,26 @@ import './App.css';
 
 const getCloud = () =>
   `Lorem ipsum dolor sit amet consectetur adipisicing elit Id ipsum quae odit in magni totam consectetur vitae enim
-  harum rerum maxime fugiat inventore nostrum corrupti labore explicabo similique quam et`
-    .split(' ')
-    .sort(() => (Math.random() > 0.5 ? 1 : -1));
+  harum rerum maxime fugiat inventore nostrum corrupti labore explicabo similique quam et`;
 
 function App() {
   const [userInput, setUserInput] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const cloud = useRef(getCloud());
+  const processInput = (value) => {
+    if (value.endsWith(' ')) {
+      setActiveIndex((index) => index + 1);
+      setUserInput('');
+    } else {
+      setUserInput(value);
+    }
+  };
 
-  console.log('Contenido de getCloud: ', cloud.current);
+  const cloud = useRef(
+    getCloud()
+      .split(' ')
+      .sort(() => (Math.random() > 0.5 ? 1 : -1))
+  );
 
   return (
     <div>
@@ -30,7 +39,7 @@ function App() {
         })}
       </p>
 
-      <input type='text' value={userInput} onChange={(e) => setUserInput(e.target.value)} />
+      <input type='text' value={userInput} onChange={(e) => processInput(e.target.value)} />
     </div>
   );
 }
