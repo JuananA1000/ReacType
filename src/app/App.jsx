@@ -2,6 +2,8 @@ import { useRef, useState } from 'react';
 import Logo from '../components/Logo/Logo';
 import './App.css';
 
+// TUTORIAL: https://youtu.be/Hpf2OmYnqhw?si=Mr6Vrtdk8fgt8RFU
+
 const getCloud = () =>
   `Lorem ipsum dolor sit amet consectetur adipisicing elit Id ipsum quae odit in magni totam consectetur vitae enim
   harum rerum maxime fugiat inventore nostrum corrupti labore explicabo similique quam et`;
