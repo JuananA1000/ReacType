@@ -8,16 +8,21 @@ const getCloud = () =>
 
 // PENDIENTE: Este componente a un archivo aparte
 const Word = (props) => {
-  const { text, active } = props;
+  const { text, active, correct } = props;
 
-  return (
-    <span
-      style={{
-        fontWeight: active ? 'bold' : 'normal',
-      }}>
-      {text}
-    </span>
-  );
+  if (active) {
+    return <span className='active'>{text}</span>;
+  }
+
+  if (correct === true) {
+    return <span className='correct'>{text}</span>;
+  }
+
+  if (correct === false) {
+    return <span className='incorrect'>{text}</span>;
+  }
+
+  return <span>{text}</span>;
 };
 
 function App() {
@@ -45,7 +50,7 @@ function App() {
 
       <p>
         {cloud.current.map((word, index) => {
-          return <b>{<Word text={word} active={index === activeIndex} />}</b>;
+          return <b>{<Word text={word} active={index === activeIndex} correct={null} />}</b>;
         })}
       </p>
 
