@@ -2,36 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import Logo from '../components/Logo/Logo';
 import './App.css';
 
+import Word from '../components/Word/Word';
+
 // TUTORIAL: https://youtu.be/Hpf2OmYnqhw?si=Mr6Vrtdk8fgt8RFU
 
 const getCloud = () =>
   `Lorem ipsum dolor sit amet consectetur adipisicing elit Id ipsum quae odit in magni totam consectetur vitae enim
   harum rerum maxime fugiat inventore nostrum corrupti labore explicabo similique quam et`;
-
-// PENDIENTE: Este componente a un archivo aparte
-const Word = (props) => {
-  const { text, active, correct } = props;
-
-  const reRender = useRef(0);
-
-  useEffect(() => {
-    reRender.current += 1;
-  });
-
-  if (active) {
-    return <span className='active'>{text}</span>;
-  }
-
-  if (correct === true) {
-    return <span className='correct'>{text}</span>;
-  }
-
-  if (correct === false) {
-    return <span className='incorrect'>{text}</span>;
-  }
-
-  return <span>{text}</span>;
-};
 
 // PENDIENTE: Este componente a un archivo aparte
 function Timer(props) {
