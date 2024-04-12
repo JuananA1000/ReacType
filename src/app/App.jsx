@@ -33,6 +33,7 @@ const Word = (props) => {
   return <span>{text}</span>;
 };
 
+// PENDIENTE: Este componente a un archivo aparte
 function Timer(props) {
   // Tiempo transcurrido
   const [timeElapsed, setTimeElapsed] = useState(0);
