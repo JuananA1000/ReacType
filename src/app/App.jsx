@@ -33,16 +33,32 @@ const Word = (props) => {
   return <span>{text}</span>;
 };
 
-const Timer = () => {
-  return <>asdfa</>
+function Timer(props) {
+  // Tiempo transcurrido
+  const [timeElapsed, setTimeElapsed] = useState(0);
+
+  useEffect(() => {
+    if (props.startCounting) {
+      setInterval(() => {
+        setTimeElapsed((oldTime) => oldTime + 1);
+      }, 1000);
+    }
+  }, [props.startCounting]);
+
+  return <p>Tiempo Transcurrido: {timeElapsed}</p>;
 }
 
 function App() {
   const [userInput, setUserInput] = useState('');
   const [activeWordIndex, setActiveWordIndex] = useState(0);
   const [correctWordArray, setCorrectWordArray] = useState([]);
+  const [startCounting, setStartCounting] = useState(false);
 
   const processInput = (value) => {
+    if (!startCounting) {
+      setStartCounting(true);
+    }
+
     if (value.endsWith(' ')) {
       setActiveWordIndex((index) => index + 1);
       setUserInput('');
@@ -68,7 +84,7 @@ function App() {
   return (
     <div>
       <Logo />
-      <Timer />
+      <Timer startCounting={startCounting} />
 
       <p>
         {cloud.current.map((word, index) => {
