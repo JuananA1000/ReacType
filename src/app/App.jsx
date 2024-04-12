@@ -7,6 +7,8 @@ import Word from '../components/Word/Word';
 import './App.css';
 
 // TUTORIAL: https://youtu.be/Hpf2OmYnqhw?si=Mr6Vrtdk8fgt8RFU
+// PENDIENTE: parar tiempo al terminar las palabras
+// PENDIENTE: las palabras sobrepasan los limites de la pantalla
 
 const getCloud = () =>
   `Lorem ipsum dolor sit amet consectetur adipisicing elit Id ipsum quae odit in magni totam consectetur vitae enim
