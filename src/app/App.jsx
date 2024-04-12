@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
-import Logo from '../components/Logo/Logo';
-import './App.css';
+import { useRef, useState } from 'react';
 
+import Logo from '../components/Logo/Logo';
+import Timer from '../components/Timer/Timer';
 import Word from '../components/Word/Word';
+
+import './App.css';
 
 // TUTORIAL: https://youtu.be/Hpf2OmYnqhw?si=Mr6Vrtdk8fgt8RFU
 
@@ -10,34 +12,11 @@ const getCloud = () =>
   `Lorem ipsum dolor sit amet consectetur adipisicing elit Id ipsum quae odit in magni totam consectetur vitae enim
   harum rerum maxime fugiat inventore nostrum corrupti labore explicabo similique quam et`;
 
-// PENDIENTE: Este componente a un archivo aparte
-function Timer(props) {
-  // Tiempo transcurrido
-  const [timeElapsed, setTimeElapsed] = useState(0);
-  const minutes = timeElapsed / 60;
-  const { correctWords, startCounting } = props;
-
-  useEffect(() => {
-    if (props.startCounting) {
-      setInterval(() => {
-        setTimeElapsed((oldTime) => oldTime + 1);
-      }, 1000);
-    }
-  }, [props.startCounting]);
-
-  return (
-    <div>
-      <p>Tiempo Transcurrido: {timeElapsed}</p>
-      <p>Velocidad: {(correctWords / minutes || 0).toFixed(2)} ppm</p>
-    </div>
-  );
-}
-
 function App() {
   const [userInput, setUserInput] = useState('');
+  const [startCounting, setStartCounting] = useState(false);
   const [activeWordIndex, setActiveWordIndex] = useState(0);
   const [correctWordArray, setCorrectWordArray] = useState([]);
-  const [startCounting, setStartCounting] = useState(false);
 
   const processInput = (value) => {
     if (!startCounting) {
