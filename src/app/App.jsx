@@ -36,6 +36,8 @@ const Word = (props) => {
 function Timer(props) {
   // Tiempo transcurrido
   const [timeElapsed, setTimeElapsed] = useState(0);
+  const minutes = timeElapsed / 60;
+  const { correctWords, startCounting } = props;
 
   useEffect(() => {
     if (props.startCounting) {
@@ -45,7 +47,12 @@ function Timer(props) {
     }
   }, [props.startCounting]);
 
-  return <p>Tiempo Transcurrido: {timeElapsed}</p>;
+  return (
+    <div>
+      <p>Tiempo Transcurrido: {timeElapsed}</p>
+      <p>Velocidad: {(correctWords / minutes || 0).toFixed(2)} ppm</p>
+    </div>
+  );
 }
 
 function App() {
@@ -84,7 +91,7 @@ function App() {
   return (
     <div>
       <Logo />
-      <Timer startCounting={startCounting} />
+      <Timer startCounting={startCounting} correctWords={correctWordArray.filter(Boolean).length} />
 
       <p>
         {cloud.current.map((word, index) => {
