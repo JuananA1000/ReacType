@@ -10,9 +10,11 @@ import './App.css';
 // PENDIENTE: parar tiempo al terminar las palabras
 // PENDIENTE: las palabras sobrepasan los limites de la pantalla
 
-const getCloud = () =>
-  `Lorem ipsum dolor sit amet consectetur adipisicing elit Id ipsum quae odit in magni totam consectetur vitae enim
-  harum rerum maxime fugiat inventore nostrum corrupti labore explicabo similique quam et`;
+// const getCloud = () =>
+//   `Lorem ipsum dolor sit amet consectetur adipisicing elit Id ipsum quae odit in magni totam consectetur vitae enim
+//   harum rerum maxime fugiat inventore nostrum corrupti labore explicabo similique quam et`;
+
+const getCloud = () => `Lorem ipsum dolor sit `;
 
 function App() {
   const [userInput, setUserInput] = useState('');
@@ -21,13 +23,23 @@ function App() {
   const [correctWordArray, setCorrectWordArray] = useState([]);
 
   const processInput = (value) => {
+    if (activeWordIndex === cloud.current.length) {
+      return;
+    }
+
     if (!startCounting) {
       setStartCounting(true);
     }
 
     if (value.endsWith(' ')) {
+      if (activeWordIndex === cloud.current.length - 1) {
+        setStartCounting(false);
+        setUserInput('');
+      } else {
+        setUserInput('');
+      }
+
       setActiveWordIndex((index) => index + 1);
-      setUserInput('');
 
       setCorrectWordArray((data) => {
         const word = value.trim();

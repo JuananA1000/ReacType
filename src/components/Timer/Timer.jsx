@@ -7,11 +7,17 @@ export default function Timer(props) {
   const { correctWords } = props;
 
   useEffect(() => {
+    let id;
+
     if (props.startCounting) {
-      setInterval(() => {
+      id = setInterval(() => {
         setTimeElapsed((oldTime) => oldTime + 1);
       }, 1000);
     }
+
+    return () => {
+      clearInterval(id);
+    };
   }, [props.startCounting]);
 
   return (
