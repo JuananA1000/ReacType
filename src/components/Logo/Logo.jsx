@@ -1,12 +1,10 @@
 import logo from '../../assets/images/logo.svg';
 
-import './Logo.css';
-
 export default function Logo() {
   return (
-    <div className='logo'>
+    <div className='logo' style={{ display: 'flex', alignItems: 'center', marginBottom: '50px' }}>
       <img src={logo} alt='logo' width={50} />
-      <h1>ReacType</h1>
+      <h1 style={{ margin: '0 0 0 10px' }}>ReacType</h1>
     </div>
   );
 }
