@@ -3,18 +3,16 @@ import { useRef, useState } from 'react';
 import Logo from '../components/Logo/Logo';
 import Timer from '../components/Timer/Timer';
 import Word from '../components/Word/Word';
+import Input from '../components/Input/Input';
 
 import './App.css';
 
 // TUTORIAL: https://youtu.be/Hpf2OmYnqhw?si=Mr6Vrtdk8fgt8RFU
-// PENDIENTE: parar tiempo al terminar las palabras
 // PENDIENTE: las palabras sobrepasan los limites de la pantalla
 
-// const getCloud = () =>
-//   `Lorem ipsum dolor sit amet consectetur adipisicing elit Id ipsum quae odit in magni totam consectetur vitae enim
-//   harum rerum maxime fugiat inventore nostrum corrupti labore explicabo similique quam et`;
-
-const getCloud = () => `Lorem ipsum dolor sit `;
+const getCloud = () =>
+  `Lorem ipsum dolor sit amet consectetur adipisicing elit Id ipsum quae odit in magni totam consectetur vitae enim
+  harum rerum maxime fugiat inventore nostrum corrupti labore explicabo similique quam et`;
 
 function App() {
   const [userInput, setUserInput] = useState('');
@@ -66,12 +64,18 @@ function App() {
 
       <p>
         {cloud.current.map((word, index) => {
-          return <Word text={word} active={index === activeWordIndex} correct={correctWordArray[index]} />;
+          return (
+            <Word
+              key={index}
+              text={word}
+              active={index === activeWordIndex}
+              correct={correctWordArray[index]}
+            />
+          );
         })}
       </p>
 
-      {/* PENDIENTE: Este componente a un archivo aparte */}
-      <input type='text' value={userInput} onChange={(e) => processInput(e.target.value)} />
+      <Input type='text' value={userInput} onChange={(e) => processInput(e.target.value)} />
     </div>
   );
 }
