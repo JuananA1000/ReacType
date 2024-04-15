@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import './Timer.css'
+
 export default function Timer(props) {
   // Tiempo transcurrido
   const [timeElapsed, setTimeElapsed] = useState(0);
@@ -21,7 +23,7 @@ export default function Timer(props) {
   }, [props.startCounting]);
 
   return (
-    <div>
+    <div className='timer-content'>
       <p>Tiempo Transcurrido: {timeElapsed}</p>
       <p>Velocidad: {(correctWords / minutes || 0).toFixed(2)} ppm</p>
     </div>

@@ -1,5 +1,3 @@
-import { useEffect, useRef } from 'react';
-
 export default function Word(props) {
   const { text, active, correct } = props;
 

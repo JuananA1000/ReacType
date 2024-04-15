@@ -62,18 +62,11 @@ function App() {
       <Logo />
       <Timer startCounting={startCounting} correctWords={correctWordArray.filter(Boolean).length} />
 
-      <p>
+      <div className='app-content'>
         {cloud.current.map((word, index) => {
-          return (
-            <Word
-              key={index}
-              text={word}
-              active={index === activeWordIndex}
-              correct={correctWordArray[index]}
-            />
-          );
+          return <Word key={index} text={word} active={index === activeWordIndex} correct={correctWordArray[index]} />;
         })}
-      </p>
+      </div>
 
       <Input type='text' value={userInput} onChange={(e) => processInput(e.target.value)} />
     </div>

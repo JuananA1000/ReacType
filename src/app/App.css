@@ -11,3 +11,11 @@
 .active {
   font-weight: bold;
 }
+
+.app-content {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  font-size: larger;
+  margin: auto;
+}
